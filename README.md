@@ -7,6 +7,7 @@ docker build -t postgres-container .
 
 docker run -d --name postgres-instance --env-file .env postgres-container
 
+
 在/backend目录运行
 
 docker build -t voting-backend-service .
