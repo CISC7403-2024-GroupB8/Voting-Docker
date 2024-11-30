@@ -1,6 +1,6 @@
 # Voting-Docker
 
-Docker 打包
+`docker-compose up --build`
 
 ## 在 `/database` 目录运行
 
@@ -12,7 +12,7 @@ docker run -d --name postgres-instance -p 5432:5432 --env-file .env postgres-con
 
 docker build -t voting-backend-service .
 
-docker run -p 8000:8000 voting-backend-service
+docker run -d --name voting-backend-service -p 8000:8000 voting-backend-service
 
 ## 在 `/frontend` 目录运行
 

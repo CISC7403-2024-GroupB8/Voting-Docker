@@ -11,7 +11,9 @@ logger = logging.getLogger(__name__)
 
 def get_db_connection():
     conn = psycopg2.connect(
-        host="localhost",
+        # host="localhost",
+        # 以docker-compose中配置的數據庫命名為host
+        host="postgres_db",
         database="voting_system",
         user="voter",
         password="12345678",
