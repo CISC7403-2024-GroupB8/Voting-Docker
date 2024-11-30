@@ -107,5 +107,5 @@ def get_results():
 
 if __name__ == "__main__":
     # print("啟動API服務器中...")
-    fetch_data()
+    # fetch_data()
     app.run(host="0.0.0.0", port=8000, debug=False)
