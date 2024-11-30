@@ -46,3 +46,7 @@ services:
       - PORT=6111
     depends_on:
       - backend_app
+
+networks:
+  default:
+    driver: bridge
