@@ -14,14 +14,16 @@ services:
       - postgres_db
 
   postgres_db:
-    image: postgres:latest
+    build:
+      context: ./database
+      dockerfile: Dockerfile
     container_name: postgres_db
     ports:
       - "5432:5432"
     env_file:
       - ./database/.env
-    volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    # volumes:
+    #   - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   vote-app:
     build:
@@ -46,7 +48,3 @@ services:
       - PORT=6111
     depends_on:
       - backend_app
-
-networks:
-  default:
-    driver: bridge
