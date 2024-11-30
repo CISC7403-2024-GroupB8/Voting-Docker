@@ -2,7 +2,8 @@
 
 ## 一鍵運行數據庫+後端的 container
 
-`docker-compose up --build`
+Windows 使用 `docker-compose up --build`
+Mac 使用 `docker compose up --build`
 
 ## 分開調試測試
 
