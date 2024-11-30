@@ -55,14 +55,14 @@ def home():
 @app.route("/vote", methods=["POST"])
 def vote():
     data = request.get_json()
-    option = data["option"]  # 获取投票选项（'cats'或'dogs'等）
+    option = data["option"]  # 获取投票选项（'Cats'或'Dogs'）
 
     # 连接数据库并更新投票数据
     # votes 是初始化的表
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(
-        "UPDATE votes SET vote_number = vote_number + 1, last_vote = NOW() WHERE name = %s",
+        "UPDATE votes SET vote_number = vote_number + 1, last_vote = NOW() WHERE option_name = %s",
         (option,),
     )
     conn.commit()
@@ -107,4 +107,5 @@ def get_results():
 
 if __name__ == "__main__":
     # print("啟動API服務器中...")
+    fetch_data()
     app.run(host="0.0.0.0", port=8000, debug=False)
