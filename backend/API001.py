@@ -22,9 +22,31 @@ def get_db_connection():
 app = Flask(__name__)
 
 
-@app.route('/')
+# print 所有 votes 表中的數據
+def fetch_data():
+    # 獲取數據庫連接
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    # 執行查詢語句
+    cur.execute("SELECT * FROM votes;")
+
+    # 獲取所有結果
+    rows = cur.fetchall()
+
+    # 打印結果
+    for row in rows:
+        print(row)
+
+    # 關閉游標和連接
+    cur.close()
+    conn.close()
+
+
+@app.route("/")
 def home():
     return "Welcome to the Voting API!"
+
 
 @app.route("/vote", methods=["POST"])
 def vote():
@@ -32,10 +54,11 @@ def vote():
     option = data["option"]  # 获取投票选项（'cats'或'dogs'等）
 
     # 连接数据库并更新投票数据
+    # votes 是初始化的表
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(
-        "UPDATE your_table_name SET vote_number = vote_number + 1, last_vote = NOW() WHERE name = %s",
+        "UPDATE votes SET vote_number = vote_number + 1, last_vote = NOW() WHERE name = %s",
         (option,),
     )
     conn.commit()
@@ -53,7 +76,7 @@ def vote():
 def get_results():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM your_table_name")
+    cur.execute("SELECT * FROM votes;")
     results = cur.fetchall()
     cur.close()
     conn.close()
@@ -74,9 +97,10 @@ def get_results():
             }
         )
 
+    print("result_data:", result_data)
     return jsonify(result_data)
 
 
 if __name__ == "__main__":
-    print("啟動API服務器中...")
+    # print("啟動API服務器中...")
     app.run(host="0.0.0.0", port=8000, debug=False)
