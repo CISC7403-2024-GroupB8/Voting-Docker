@@ -8,6 +8,7 @@ services:
     container_name: backend_app
     ports:
       - "8000:8000"
+    restart: unless-stopped
     # 確保 postgres_db 服務啟動後，backend_app 服務才啟動
     depends_on:
       - postgres_db
