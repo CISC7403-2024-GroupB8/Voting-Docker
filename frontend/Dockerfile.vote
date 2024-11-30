@@ -1,0 +1,23 @@
+# 使用Node.js官方鏡像作為基礎鏡像
+FROM node:18
+
+# 設置工作目錄
+WORKDIR /app
+
+# 複製package.json和package-lock.json
+COPY package*.json ./
+
+# 安裝依賴
+RUN npm install
+
+# 複製所有源文件到工作目錄
+COPY . .
+
+# 暴露應用程序運行的端口（這裡使用6110）
+EXPOSE 6110
+
+# 設置環境變量以指定端口
+ENV PORT=6110
+
+# 啟動應用程序
+CMD ["npm", "start"]
