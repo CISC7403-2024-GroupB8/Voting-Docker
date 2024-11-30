@@ -1,3 +1,5 @@
+-- your_table_name被指定為votes
+
 CREATE TABLE IF NOT EXISTS votes (
     option_name VARCHAR(50) PRIMARY KEY,
     vote_number INT NOT NULL,
