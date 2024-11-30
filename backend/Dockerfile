@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "API001.py"]
+CMD ["python", "api.py"]

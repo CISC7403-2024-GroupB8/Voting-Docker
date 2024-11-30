@@ -1,5 +1,6 @@
 # Voting-Docker
 
+## 一鍵運行數據庫+後端的container
 `docker-compose up --build`
 
 ## 在 `/database` 目录运行
