@@ -1,5 +1,7 @@
 # Voting-Docker
 
+GitHub 倉庫鏈接：[https://github.com/CISC7403-2024-GroupB8/Voting-Docker](https://github.com/CISC7403-2024-GroupB8/Voting-Docker)
+
 ## 一鍵運行數據庫+後端的 container
 
 Windows 使用 `docker-compose up --build`
